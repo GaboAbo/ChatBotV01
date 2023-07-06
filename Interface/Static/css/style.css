@@ -1,0 +1,187 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 98vh;
+    background-color: #ffffff;
+    background-size:cover;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    background-image: url("../images/wp1847866.jpg");
+}
+
+.chatbox {
+    width: 1820px;
+    height: 75vh;
+    background-color: #373b40;
+    opacity: 0.9;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+.box {
+    width: 1760px;
+    max-width: 1760px;
+    height: 90%;
+    background-color: #202225;
+    opacity: 0.9;
+    color: #e0e0e0;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 3px;
+    overflow: auto;
+}
+
+pre {
+    white-space: pre-wrap;
+    width: 1710px;
+    margin: 5px;
+    padding: 10px;
+    background-color: #32353a;
+    opacity: 0.9;
+    color:#2fff5f;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 200ms;
+}
+
+pre:hover {
+    opacity: 1;
+    background-color: #1d1e21;
+}
+
+.ai {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    color: #4bdeff;
+}
+
+.user {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    color: #ffffff;
+}
+
+
+.user-interface {
+    align-items: center;
+    width: 1760px;
+    background-color: #32353a;
+    opacity: 0.9;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+.user-form {
+    width: 1690px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: #d2d2d2;
+    border: none;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+input:focus {
+    outline-style: none;
+    box-shadow: none;
+}
+
+.user-submit {
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    background-color: transparent;
+    background-image: url("../icons/icons8-paper-plane2-40.png");
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    border: none;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    vertical-align: middle;
+    transition: 300ms;
+}
+
+.user-submit:hover {
+    opacity: 1;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    color: #ffffff;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    background-color: #797979;
+    opacity: 0.8;
+    border: none;
+    border-radius: 2px;
+    transition: 300ms;
+}
+
+img:hover {
+    opacity: 1;
+    background-color: #ffffff;
+}
+
+a {
+    border: none;
+    width: 40;
+    height: 40;
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+#rrss {
+    position: absolute;
+    width: 130px;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+    margin-right: 10px;
+    background-color: #373b40;
+    opacity: 0.9;
+    border-radius: 2px;
+}
+
+#git {
+    background-image: url("../icons/icons8-github-50.png");
+    margin-right: 10px;
+}
+
+#linkedin {
+    background-image: url("../icons/icons8-linkedin-64.png");
+}
+
+#disclaimer {
+    width: 500px;
+    margin: 5px;
+    padding: 5px;
+    background-color: #373b40;
+    opacity: 0.9;
+    border-radius: 2px;
+}

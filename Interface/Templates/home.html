@@ -1,0 +1,19 @@
+{% include "header.html" %}
+{% load static %}
+    <div class="chatbox">
+        <div class="box">
+        <!--If the value ai_message is not empty, the message bubbles will be showed-->
+        {% if ai_message %}
+            <pre>{{ u_time|time:"H:i" }}, User: <code class="user">{{ u_message }}</code></pre>
+            <pre>{{ ai_time|time:"H:i" }}, BOT.: <code class="ai">{{ ai_message }}</code></pre>
+        {% endif %}
+        </div>
+        <div class="user-interface">
+            <form action="" method="POST" class="">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="" class="user-submit">
+            </form>
+        </div>
+    </div>
+{% include "footer.html" %}
