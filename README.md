@@ -11,9 +11,9 @@ My first (actually is the fourth but it's the best I've done so far) Django Chat
 
 If venv and .env are already set, skip to step 3
 
-1. Create a virtual environment
+1. Create and deploy virtual environment
 
-`python -m venv venv`
+`python -m venv venv && source venv/bin/activate`
 
 2. Create a .env file with the following structure:
 ```
