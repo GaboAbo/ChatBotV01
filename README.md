@@ -48,11 +48,11 @@ There are test made for the Domain and App modules
 
 `python manage.py test module.tests.test_name`
 
-    Test List
+Test List
 
-    Domain.tests.SettingTestCase: Check if the Secret key and Api key are set (can be change at Domain/tests.py)
+Domain.tests.SettingTestCase: Check if the Secret key and Api key are set (can be change at Domain/tests.py)
 
-    App.tests.ViewTestCase: Check if the MainView func handle the post, api and http request using a simulated POST request and a preset input and output (can be change at App/tests.py)
+App.tests.ViewTestCase: Check if the MainView func handle the post, api and http request using a simulated POST request and a preset input and output (can be change at App/tests.py)
 
 4. All tests
 
