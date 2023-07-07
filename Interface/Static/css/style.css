@@ -60,7 +60,7 @@ pre:hover {
 .ai {
     overflow-wrap: break-word;
     word-wrap: break-word;
-    color: #4bdeff;
+    color: #ff5900;
 }
 
 .user {
@@ -150,6 +150,11 @@ a {
     width: 40;
     height: 40;
     text-decoration: none;
+    color: #e9996e;
+}
+
+a:hover {
+    color: #ff5900;
 }
 
 p {
@@ -184,4 +189,99 @@ p {
     background-color: #373b40;
     opacity: 0.9;
     border-radius: 2px;
+}
+
+.auth-form {
+    width: 630px;
+    height: auto;
+    background-color: #373b40;
+    color: #ff5900;
+    opacity: 0.9;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-title {
+    color: #e0e0e0;
+    margin: 5px;
+    margin-bottom: 20px;
+}
+
+.auth-input {
+    width: 600px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #d2d2d2;
+    border: none;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+}
+
+.auth-submit {
+    width: 610px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 5px;
+    transition: 300ms;
+    background-color: rgb(31, 190, 151);
+    color: #1f1f1f;
+    border: none;
+    padding: 5px;
+    font-size: large;
+}
+
+.auth-submit:hover {
+    background-color: rgb(255, 78, 78);
+    color: #ffffff;
+}
+
+.auth-message {
+    color: #e8ffec;
+    margin: 5px;
+    margin-top: 20px;
+    font-size: medium;
+}
+
+.auth-warning {
+    color: #ff5900;
+    margin: 5px;
+    margin-top: 20px;
+    font-size: medium;
+    font-weight: lighter;
+}
+
+
+
+.topnav {
+    background-color: #373b40;
+    opacity: 0.9;
+    overflow: hidden;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+  
+
+.topnav a {
+    float: left;
+    color: #e8ffec;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+  
+
+.topnav a:hover {
+    background-color: #e8ffec;
+    color: black;
+}
+  
+
+.topnav a.active {
+    background-color: rgb(31, 190, 151);
+    color: white;
 }
