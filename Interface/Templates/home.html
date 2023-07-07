@@ -1,5 +1,6 @@
 {% include "header.html" %}
 {% load static %}
+    {% if user.is_authenticated %}
     <div class="chatbox">
         <div class="box">
         <!--If the value ai_message is not empty, the message bubbles will be showed-->
@@ -16,4 +17,11 @@
             </form>
         </div>
     </div>
+    {% else %}
+    <div class="auth-form">
+        <h3 class="auth-title">This ChatBot is only for registered users.</h3>
+        <h3 class="auth-title"><a href="{{ '/login/' }}">Login</a></h3>
+        <h3 class="auth-title"><a  href="{{ '/register/' }}">Sign in</a></h3>
+    </div>
+    {% endif %}
 {% include "footer.html" %}
