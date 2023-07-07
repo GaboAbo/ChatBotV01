@@ -1,0 +1,11 @@
+{% include "header.html" %}
+{% load static %}
+    <div class="auth-form">
+        <h3 class="auth-title">Register Form</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ Form }}
+            <input class="auth-submit" type="submit" value="Register">
+        </form>
+    </div>
+{% include "footer.html" %}

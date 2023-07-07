@@ -1,0 +1,15 @@
+{% include "header.html" %}
+{% load static %}
+    {% if request.user.is_authenticated %}
+    <div class="auth-form">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p>Are you sure you want to logout?</p>
+            <button class="auth-submit" type="submit">Yes, logout.</button>
+        </form>
+        <p class="auth-warning">{{ error }}</p>
+    </div>
+    {% else %}
+    <h3 class="auth-title">You're not logged in. Would you like to <a href="{{ '/login/' }}">Login</a>?</h3>
+    {% endif %}
+{% include "footer.html" %}
