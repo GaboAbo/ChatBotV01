@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
-from .forms  import Form
+from .forms  import Form, RegisterForm, LogInForm
 
 import openai
 import os
@@ -10,6 +12,7 @@ from datetime import datetime
 # Api key stored outside the function so it won't be requested in every call
 openai.api_key = os.environ.get("OPENAI_API_KEY")
 
+#@login_required
 def MainView(request):
     # If there is no POST request the Form will be empty
     user_request = Form(request.POST or None)
@@ -49,3 +52,51 @@ def MainView(request):
     """The render method is use to return a http request to home.html and all the values
     stored in the context dictionary"""
     return render(request, 'home.html', context=context)
+
+
+def LoginView(request):
+    Form = LogInForm(request.POST or None)
+    if Form.is_valid():
+        username = Form.cleaned_data.get("username")
+        password = Form.cleaned_data.get("password")
+
+        user = authenticate(
+            request,
+            username = username,
+            password = password
+        )
+        if user is None:
+            context = {'error': "Invalid username or password"}
+            return render(request, 'auth/login.html', context=context)
+        
+        login(request, user)
+        return redirect('/')
+    
+    context = {
+        'Form': Form
+    }
+
+    return render(request, 'auth/login.html', context=context)
+
+
+def RegisterView(request):
+    Form = RegisterForm(request.POST or None)
+
+    context = {}
+
+    if Form.is_valid():
+        Form.save()
+        context['created'] = True
+        return redirect('/login')
+
+    context['Form'] = Form
+    
+    return render(request, 'auth/register.html', context=context)
+
+
+def LogOutView(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect("/login/")
+    
+    return render(request, 'auth/logout.html', {})
