@@ -3,6 +3,11 @@
     {% if user.is_authenticated %}
     <div class="chatbox">
         <div class="box">
+        {% if history %}
+            {% for element in history %}
+                <pre>{{ element.msgtime|time:"H:i" }}, User: <code class="user">{{ element.message }}</code></pre>
+            {% endfor %}
+        {% endif %}
         <!--If the value ai_message is not empty, the message bubbles will be showed-->
         {% if ai_message %}
             <pre>{{ u_time|time:"H:i" }}, User: <code class="user">{{ u_message }}</code></pre>

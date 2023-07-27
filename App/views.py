@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .forms  import Form, RegisterForm, LogInForm
+from .models import HistoryModel
 
 import openai
 import os
@@ -14,19 +16,20 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 #@login_required
 def MainView(request):
-    # If there is no POST request the Form will be empty
     user_request = Form(request.POST or None)
-    # Setting an empty form to be sent to home.html using the render method
+    history      = request.GET.get('history')
+    print('after redirect', history)
+
     context = {
         'form': Form(),
+        'history': history
     }
 
     # If is a POST request and is valid(content is Not empty)
     if user_request.is_valid():
-        # The clean method to get the content is called
         user_message = user_request.clean_content()
-        # The current time is saved to be used as the user message time
-        user_time = datetime.now()
+        user_time    = datetime.now()
+        user_id      = request.user
 
         # Sending the request to the OpenAI API and storing the result into a variable
         api_response = openai.ChatCompletion.create(
@@ -36,17 +39,26 @@ def MainView(request):
         )
 
         # The current time is save to be used as the ai message time or failure time
-        context['ai_time'] = datetime.now()
+        api_time = datetime.now()
 
         # If the api_response is not empty, it means the request returned a valid dictionary
         if api_response:
             context['u_message']  = user_message
             context['u_time']     = user_time
-            # The content is stored into the ai_message by accesing to the api_response dict
             context['ai_message'] = api_response['choices'][0]['message']['content']
-        # If the api_response is empty, some setting, communication to the API failed
+            context['ai_time']    = api_time
+
+            HistoryModel.objects.create(
+                message = user_message, 
+                msgtime = user_time,
+                user    = user_id
+            )
+            HistoryModel.objects.create(
+                message = api_response['choices'][0]['message']['content'], 
+                msgtime = api_time,
+                user    = user_id
+            )
         else:
-            # Then an error message is stored into the ai_message
             context['ai_message'] = 'Something wrong happened, please try again.'
 
     """The render method is use to return a http request to home.html and all the values
@@ -70,7 +82,12 @@ def LoginView(request):
             return render(request, 'auth/login.html', context=context)
         
         login(request, user)
-        return redirect('/')
+
+        user_id = User.objects.get(username=request.user.username).id
+        history = HistoryModel.objects.get(pk=user_id)
+        print('before redirect', history)
+
+        return redirect('/', history=history)
     
     context = {
         'Form': Form
